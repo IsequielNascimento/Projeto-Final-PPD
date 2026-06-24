@@ -1,0 +1,2 @@
+Main-Class: Launcher
+Class-Path: lib/activemq-broker-5.17.6.jar lib/activemq-client-5.17.6.jar lib/activemq-openwire-legacy-5.17.6.jar lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar lib/geronimo-jms_1.1_spec-1.1.1.jar lib/hawtbuf-1.11.jar lib/jackson-annotations-2.15.3.jar lib/jackson-core-2.15.3.jar lib/jackson-databind-2.15.3.jar lib/javax.annotation-api-1.3.2.jar lib/slf4j-api-1.7.36.jar lib/slf4j-simple-1.7.36.jar 
