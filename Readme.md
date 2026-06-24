@@ -111,9 +111,9 @@ ProjetoFinal/
 
 Java JDK 11 ou superior instalado.
 
-### Opção 1 — JAR (recomendado para entrega)
+### Opção 1 — JAR
 
-Extraia o ZIP. Dentro da pasta extraída, execute:
+Extraia o ZIP ou faça git clone + link do repositório. Dentro da pasta extraída, execute:
 
 ```bash
 java -jar projeto-final.jar
@@ -154,7 +154,7 @@ Clique em **"Iniciar Servidor de Mensagens"**. A janela do servidor abre e o log
 
 **3. Abrir dois clientes**
 
-Clique em **"+ Novo Cliente"** duas vezes. Informe os nomes `alice` e `bob`, host `localhost`.
+Clique em **"+ Novo Cliente"** duas vezes. Informe os nomes, ex: `alice` e `bob`, host `localhost`.
 
 **4. Adicionar contato (Req. 8)**
 
@@ -187,9 +187,6 @@ Feche a janela do Bob completamente e abra um novo cliente com o nome `bob`. As 
 
 O ActiveMQ com `setPersistent(true)` tenta criar a pasta `activemq-data/` no diretório de trabalho para armazenar as filas em disco (KahaDB). Em ambientes Windows sem permissão de escrita no diretório do JAR, isso gera o erro `Fatally failed to create SystemUsage`. Com `setPersistent(false)` o broker opera inteiramente em memória, eliminando o problema. As mensagens são preservadas enquanto o servidor estiver rodando.
 
-### Race condition na entrega da fila
-
-O servidor drena a fila JMS *dentro* da chamada `conectar()` (via RMI). Nesse momento, a `ClienteUI` ainda não foi criada e `onMensagem` era `null`, fazendo as mensagens serem descartadas. A solução implementada em `ClienteLogica` é bufferizar as mensagens recebidas antes do callback ser registrado e reentregá-las imediatamente quando a UI chamar `onMensagem(cb)`.
 
 ### Thread safety
 
